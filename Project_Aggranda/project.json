@@ -1,0 +1,57 @@
+{
+  "name": "Project_Aggranda",
+  "description": "Identifies and processes images belonging to different Romanian political groups",
+  "main": "Main.xaml",
+  "dependencies": {
+    "Atalasoft.dotImage.Ocr.Abbyy.x64": "[11.2.0.13629]",
+    "RemoveSpecialCharacters.Activities": "[1.0.8]",
+    "UiPath.Abbyy.Activities": "[1.4.2]",
+    "UiPath.Excel.Activities": "[2.11.0-preview]",
+    "UiPath.System.Activities": "[21.6.1-preview]",
+    "UiPath.UIAutomation.Activities": "[21.6.1-preview]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "21.4.4.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "d9286475-487a-4f5f-99e4-f9bc40629a0d",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Legacy"
+}

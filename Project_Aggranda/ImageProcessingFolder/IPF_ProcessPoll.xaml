@@ -1,0 +1,212 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="IPF_ProcessPoll" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:r="clr-namespace:RemoveSpecialCharacters;assembly=RemoveSpecialCharacters" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Candidates" Type="InArgument(s:String[])" />
+    <x:Property Name="in_Parties" Type="InArgument(s:String[])" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1097.6,3045.6</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>IPF_ProcessPoll_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Abbyy.Core.FlexiCapture</x:String>
+      <x:String>UiPath.Abbyy.Core.FlexiCapture.Enums</x:String>
+      <x:String>UiPath.Abbyy.Core.FlexiCapture.ValidationStationAdapters</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>RemoveSpecialCharacters</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Abbyy.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>RemoveSpecialCharacters</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Abbyy.Core</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="IPF_ProcessPoll" sap:VirtualizedContainerService.HintSize="1108,2980.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="Text" />
+      <Variable x:TypeArguments="s:String[]" Name="NotepadLines" />
+      <Variable x:TypeArguments="x:Int32" Name="Iterator" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1066.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Begin processing the poll&quot;]" />
+    <Assign DisplayName="Assign - Reads And Splits The Notepad In Multiple Rows" sap:VirtualizedContainerService.HintSize="1066.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="s:String[]">[NotepadLines]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="s:String[]">[File.ReadAllLines("Electorale_Challenge\Sondaje.txt")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Line In The Notepad File" sap:VirtualizedContainerService.HintSize="1066.4,2522.4" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[NotepadLines]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:String">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:String" Name="line" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1031.2,2397.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="ProcessedLine" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign - ReInitialize The Iterator" sap:VirtualizedContainerService.HintSize="989.6,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[Iterator]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">0</InArgument>
+              </Assign.Value>
+            </Assign>
+            <r:RemoveDiacritics DisplayName="Remove diacritics" sap:VirtualizedContainerService.HintSize="989.6,134.4" sap2010:WorkflowViewState.IdRef="RemoveDiacritics_1" NormalizedString="[ProcessedLine]" StringWithDiacritics="[line]" />
+            <ui:InterruptibleWhile DisplayName="While The Index Is Less Than 8" sap:VirtualizedContainerService.HintSize="989.6,2030.4" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+              <ui:InterruptibleWhile.Body>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="954.4,1863.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:Boolean" Name="CandidateMatches" />
+                    <Variable x:TypeArguments="x:Boolean" Name="FolderExists" />
+                    <Variable x:TypeArguments="x:String" Name="ProcessedCandidate" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <r:RemoveDiacritics DisplayName="Remove diacritics" sap:VirtualizedContainerService.HintSize="912.8,134.4" sap2010:WorkflowViewState.IdRef="RemoveDiacritics_2" NormalizedString="[ProcessedCandidate]" StringWithDiacritics="[in_Candidates(Iterator)]" />
+                  <ui:IsMatch DisplayName="Is Match - Checks Whether The Candidate Belongs To A Line" sap:VirtualizedContainerService.HintSize="912.8,60" sap2010:WorkflowViewState.IdRef="IsMatch_3" Input="[ProcessedLine]" IsBuilderTabModified="False" Pattern="[ProcessedCandidate]" RegexOption="IgnoreCase, Compiled" Result="[CandidateMatches]" />
+                  <If Condition="[CandidateMatches]" DisplayName="If The Candidate Belongs To A Line" sap:VirtualizedContainerService.HintSize="912.8,1396" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="877.6,1216.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Sequence sap:VirtualizedContainerService.HintSize="836,1124" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="FoundPercentage" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:Matches BuilderPattern="(\d)*(,|.)(\d)+%" DisplayName="Matches - Checks The Percentage" sap:VirtualizedContainerService.HintSize="794.4,60" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[ProcessedLine]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;(\\d)*(,|.)(\\d)+%&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(\d)*(,|.)(\d)+%" RegexOption="IgnoreCase, Compiled" Result="[FoundPercentage]" />
+                          <ui:PathExists DisplayName="Path Exists - Checks Whether The Host Folder Exists" Exists="[FolderExists]" sap:VirtualizedContainerService.HintSize="794.4,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[&quot;C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\&quot; + in_Parties(Iterator)]" PathType="Folder" />
+                          <If Condition="[FolderExists]" DisplayName="If Host Folder Exists" sap:VirtualizedContainerService.HintSize="794.4,800.8" sap2010:WorkflowViewState.IdRef="If_3">
+                            <If.Then>
+                              <Sequence DisplayName="Sequence - Simply Write In Excel" sap:VirtualizedContainerService.HintSize="375.2,520.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:WriteCell Cell="A1" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="Sheet1" Text="[in_Candidates(Iterator)]" WorkbookPath="[&quot;C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\&quot; + in_Parties(Iterator) + &quot;\&quot; + in_Candidates(Iterator) + &quot;.xlsx&quot;]" />
+                                <ui:WriteCell Cell="B1" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="Sheet1" Text="[in_Parties(Iterator)]" WorkbookPath="[&quot;C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\&quot; + in_Parties(Iterator) + &quot;\&quot; + in_Candidates(Iterator) + &quot;.xlsx&quot;]" />
+                                <ui:WriteCell Cell="C1" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_3" SheetName="Sheet1" Text="[FoundPercentage(0).ToString()]" WorkbookPath="[&quot;C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\&quot; + in_Parties(Iterator) + &quot;\&quot; + in_Candidates(Iterator) + &quot;.xlsx&quot;]" />
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence DisplayName="Sequence - Create Folder Then Write" sap:VirtualizedContainerService.HintSize="375.2,641.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\&quot; + in_Parties(Iterator)]" />
+                                <ui:WriteCell Cell="A1" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_4" SheetName="Sheet1" Text="[in_Candidates(Iterator)]" WorkbookPath="[&quot;C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\&quot; + in_Parties(Iterator) + &quot;\&quot; + in_Candidates(Iterator) + &quot;.xlsx&quot;]" />
+                                <ui:WriteCell Cell="B1" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_5" SheetName="Sheet1" Text="[in_Parties(Iterator)]" WorkbookPath="[&quot;C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\&quot; + in_Parties(Iterator) + &quot;\&quot; + in_Candidates(Iterator) + &quot;.xlsx&quot;]" />
+                                <ui:WriteCell Cell="C1" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="WriteCell_6" SheetName="Sheet1" Text="[FoundPercentage(0).ToString()]" WorkbookPath="[&quot;C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\&quot; + in_Parties(Iterator) + &quot;\&quot; + in_Candidates(Iterator) + &quot;.xlsx&quot;]" />
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                        </Sequence>
+                      </Sequence>
+                    </If.Then>
+                  </If>
+                  <Assign DisplayName="Assign - Continues Iteration" sap:VirtualizedContainerService.HintSize="912.8,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[Iterator]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[Iterator + 1]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </ui:InterruptibleWhile.Body>
+              <ui:InterruptibleWhile.Condition>
+                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Iterator &lt; 8" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+              </ui:InterruptibleWhile.Condition>
+            </ui:InterruptibleWhile>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1066.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Poll processed successfully&quot;]" />
+  </Sequence>
+</Activity>

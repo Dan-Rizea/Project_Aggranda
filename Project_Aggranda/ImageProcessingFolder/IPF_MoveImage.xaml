@@ -1,0 +1,230 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="IPF_MoveImage" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_FoundParty" Type="InArgument(x:String)" />
+    <x:Property Name="in_FoundCandidate" Type="InArgument(x:String)" />
+    <x:Property Name="in_IsInconclusive" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_IsJpgOrPng" Type="InArgument(x:String)" />
+    <x:Property Name="in_TransactionItem" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1246.4,2319.2</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>IPF_MoveImage_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="28">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Abbyy.Core.FlexiCapture</x:String>
+      <x:String>UiPath.Abbyy.Core.FlexiCapture.Enums</x:String>
+      <x:String>UiPath.Abbyy.Core.FlexiCapture.ValidationStationAdapters</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Abbyy.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Abbyy.Core</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="IPF_MoveImage" sap:VirtualizedContainerService.HintSize="1256.8,2254.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="FileSuccessfullyMoved" />
+      <Variable x:TypeArguments="x:String" Name="CurrentFileName" />
+      <Variable x:TypeArguments="x:Boolean" Name="FileNotMoved" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1215.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Moving the image&quot;]" />
+    <If Condition="[Not in_IsInconclusive]" DisplayName="If The Image Is Not Inconclusive" sap:VirtualizedContainerService.HintSize="1215.2,1896" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="585.6,1736.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="OldFile" />
+            <Variable x:TypeArguments="x:String" Name="NewFile" />
+            <Variable x:TypeArguments="x:String" Name="GetFileName" />
+            <Variable x:TypeArguments="x:Boolean" Name="FolderExists" />
+            <Variable x:TypeArguments="x:Int32" Name="RandomNumber" />
+            <Variable x:TypeArguments="x:String" Name="ProcessedRandomNumber" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:PathExists DisplayName="Path Exists - Checks If The Folder Exists" Exists="[FolderExists]" sap:VirtualizedContainerService.HintSize="544,90.4" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[&quot;C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\&quot; + in_FoundParty]" PathType="Folder" />
+          <If Condition="[FolderExists]" DisplayName="If The Folder Exists" sap:VirtualizedContainerService.HintSize="544,240" sap2010:WorkflowViewState.IdRef="If_3">
+            <If.Else>
+              <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder - If It Does Not Exist" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\&quot; + in_FoundParty]" />
+            </If.Else>
+          </If>
+          <Assign DisplayName="Assign A Random Number" sap:VirtualizedContainerService.HintSize="544,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[RandomNumber]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[New Random().Next(1000,9999)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign - The Number Is Used In Order For Files To Not Get Overwritten/Not Get Moved" sap:VirtualizedContainerService.HintSize="544,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[ProcessedRandomNumber]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[RandomNumber.ToString()]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Sequence sap:VirtualizedContainerService.HintSize="544,1033.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:PathExists DisplayName="Path Exists - Checks Whether The File Has Been Moved" Exists="[FileNotMoved]" sap:VirtualizedContainerService.HintSize="502.4,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_TransactionItem]" PathType="File" />
+            <If Condition="[FileNotMoved]" DisplayName="If File Not Already Moved" sap:VirtualizedContainerService.HintSize="502.4,810.4" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <ui:RetryScope ContinueOnError="True" DisplayName="Retry Scope - In Case The Image Has Not Been Disposed Of" sap:VirtualizedContainerService.HintSize="467.2,631.2" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="10" RetryInterval="00:00:05">
+                  <ui:RetryScope.ActivityBody>
+                    <ActivityAction>
+                      <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="425.6,383.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:MoveFile ContinueOnError="True" Destination="[&quot;C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\&quot; + in_FoundParty + &quot;\&quot; + in_FoundCandidate + ProcessedRandomNumber + in_IsJpgOrPng]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="384,160" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="False" Path="[in_TransactionItem]" />
+                        <ui:PathExists DisplayName="Path Exists - Checks Whether The File Has Been Moved Successfully" Exists="[FileSuccessfullyMoved]" sap:VirtualizedContainerService.HintSize="384,90.4" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[&quot;C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\&quot; + in_FoundParty + &quot;\&quot; + in_FoundCandidate + ProcessedRandomNumber + in_IsJpgOrPng]" PathType="File" />
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:RetryScope.ActivityBody>
+                  <ui:RetryScope.Condition>
+                    <ActivityFunc x:TypeArguments="x:Boolean">
+                      <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True - File Has Been Moved Condition" Expression="[FileSuccessfullyMoved]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
+                    </ActivityFunc>
+                  </ui:RetryScope.Condition>
+                </ui:RetryScope>
+              </If.Then>
+            </If>
+          </Sequence>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Sequence - Very Similar To The &quot;Then&quot; Branch" sap:VirtualizedContainerService.HintSize="585.6,1729.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:Boolean" Name="InconclusiveExists" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="Assign - Gets The Name Of The File To Be Checked For Duplicates" sap:VirtualizedContainerService.HintSize="544,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[CurrentFileName]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[in_TransactionItem.Substring(in_TransactionItem.LastIndexOf("\"))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:PathExists DisplayName="Path Exists" Exists="[InconclusiveExists]" sap:VirtualizedContainerService.HintSize="544,90.4" sap2010:WorkflowViewState.IdRef="PathExists_4" Path="C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\Inconclusive" PathType="Folder" />
+          <If Condition="[InconclusiveExists]" sap:VirtualizedContainerService.HintSize="544,332.8" sap2010:WorkflowViewState.IdRef="If_6">
+            <If.Else>
+              <Sequence sap:VirtualizedContainerService.HintSize="375.2,173.6" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\Inconclusive" />
+              </Sequence>
+            </If.Else>
+          </If>
+          <Sequence sap:VirtualizedContainerService.HintSize="544,1033.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:PathExists DisplayName="Path Exists" Exists="[FileNotMoved]" sap:VirtualizedContainerService.HintSize="502.4,90.4" sap2010:WorkflowViewState.IdRef="PathExists_5" Path="[in_TransactionItem]" PathType="File" />
+            <If Condition="[FileNotMoved]" sap:VirtualizedContainerService.HintSize="502.4,810.4" sap2010:WorkflowViewState.IdRef="If_4">
+              <If.Then>
+                <ui:RetryScope ContinueOnError="True" DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="467.2,631.2" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="10" RetryInterval="00:00:05">
+                  <ui:RetryScope.ActivityBody>
+                    <ActivityAction>
+                      <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="425.6,383.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:MoveFile ContinueOnError="True" Destination="C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\Inconclusive" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="384,160" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="False" Path="[in_TransactionItem]" />
+                        <ui:PathExists DisplayName="Path Exists" Exists="[FileSuccessfullyMoved]" sap:VirtualizedContainerService.HintSize="384,90.4" sap2010:WorkflowViewState.IdRef="PathExists_6" Path="[&quot;C:\Users\40770\Documents\UiPath\Project_Aggranda\ProcessedImagesFolder\Inconclusive\&quot; + CurrentFileName]" PathType="File" />
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:RetryScope.ActivityBody>
+                  <ui:RetryScope.Condition>
+                    <ActivityFunc x:TypeArguments="x:Boolean">
+                      <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True" Expression="[FileSuccessfullyMoved]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="CheckTrue_2" />
+                    </ActivityFunc>
+                  </ui:RetryScope.Condition>
+                </ui:RetryScope>
+              </If.Then>
+            </If>
+          </Sequence>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1215.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Image moved successfully&quot;]" />
+  </Sequence>
+</Activity>
